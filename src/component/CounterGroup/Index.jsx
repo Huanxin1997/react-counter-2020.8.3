@@ -1,5 +1,6 @@
 import React from 'react';
 import Counter from '../Counter/Index';
+import store from '../../store';
 
 class CounterGroup extends React.Component {
 
@@ -8,7 +9,7 @@ class CounterGroup extends React.Component {
 
         this.state = {
             numberOfCounters: 0,
-            total: 0,
+            total: store.getState().counters,
             counters: []
         }
 
@@ -29,6 +30,7 @@ class CounterGroup extends React.Component {
     }
 
     handlInputChange = event => {
+        store.dispatch({ type: 'RETURN_ZERO' });
         let count = 0;
         if (event.target.value < 0) {
             alert("Please give a number larger than 0!");
@@ -41,9 +43,9 @@ class CounterGroup extends React.Component {
         }, () => this.createCounterList());
     }
 
-    calculateTotal = number => {
-        this.setState(prevState => {
-            return { total: prevState.total + number }
+    calculateTotal = () => {
+        this.setState({
+            total: store.getState().counters
         })
     }
 

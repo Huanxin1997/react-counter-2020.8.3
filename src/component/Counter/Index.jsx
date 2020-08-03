@@ -1,4 +1,5 @@
 import React from 'react';
+import store from '../../store';
 
 class Counter extends React.Component {
     constructor(props) {
@@ -8,27 +9,6 @@ class Counter extends React.Component {
             number: 0
         }
     }
-
-    // componentWillMount() {
-    //     console.log("===============Component will be mounted===============");
-    //     console.log(document.querySelector("#counter"));
-    // }
-
-    // componentDidMount() {
-    //     console.log("===============Component be mounted===============");
-    //     console.log(document.querySelector("#counter"));
-    // }
-
-    // componentWillUpdate(newProps, newState) {
-    //     console.log("===============Component will be updated===============");
-    //     console.log(document.querySelector("#counter"));
-    // }
-
-
-    // componentDidUpdate(newProps, newState) {
-    //     console.log("===============Component will be unmounted===============");
-    //     console.log(document.querySelector("#counter"));
-    // }
 
     componentWillReceiveProps() {
         this.setState({
@@ -40,18 +20,20 @@ class Counter extends React.Component {
         this.setState({
             number: this.state.number + 1
         });
-        this.handleClick(1);
+        store.dispatch({ type: 'INCREASE' });
+        this.handleClick();
     };
 
     decrease = () => {
         this.setState({
             number: this.state.number - 1
         });
-        this.handleClick(-1);
+        store.dispatch({ type: 'DECREASE' });
+        this.handleClick();
     }
 
-    handleClick(number) {
-        this.props.calculateTotal(number);
+    handleClick() {
+        this.props.calculateTotal();
     }
 
     render() {
