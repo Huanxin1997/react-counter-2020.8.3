@@ -40,18 +40,18 @@ class Counter extends React.Component {
         this.setState({
             number: this.state.number + 1
         });
-        this.handleClick("+");
+        this.handleClick(1);
     };
 
     decrease = () => {
         this.setState({
             number: this.state.number - 1
         });
-        this.handleClick("-");
+        this.handleClick(-1);
     }
 
-    handleClick(calculeteMethod) {
-        this.props.calculateTotal(calculeteMethod);
+    handleClick(number) {
+        this.props.calculateTotal(number);
     }
 
     render() {

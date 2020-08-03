@@ -41,16 +41,10 @@ class CounterGroup extends React.Component {
         }, () => this.createCounterList());
     }
 
-    calculateTotal = calculateMethod => {
-        if (calculateMethod === "+") {
-            this.setState((prevState) => {
-                return { total: prevState.total + 1 }
-            })
-        } else {
-            this.setState(prevState => {
-                return { total: prevState.total - 1 }
-            })
-        }
+    calculateTotal = number => {
+        this.setState(prevState => {
+            return { total: prevState.total + number }
+        })
     }
 
     render() {
