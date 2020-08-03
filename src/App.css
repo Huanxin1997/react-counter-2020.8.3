@@ -22,3 +22,9 @@
   left: 48%;
   top: 45%;
 }
+
+.count_input {
+  margin: 24px;
+  padding: 4px;
+  font-size: 18px;
+}
