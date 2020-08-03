@@ -30,6 +30,12 @@ class Counter extends React.Component {
     //     console.log(document.querySelector("#counter"));
     // }
 
+    componentWillReceiveProps() {
+        this.setState({
+            number: 0
+        })
+    }
+
     increase = () => {
         this.setState({
             number: this.state.number + 1
