@@ -1,4 +1,4 @@
-const counters = (state = 0, action) => {
+const total = (state = 0, action) => {
     switch (action.type) {
         case 'INCREASE':
             return state + 1;
@@ -9,4 +9,4 @@ const counters = (state = 0, action) => {
     }
 }
 
-export default counters;
+export default total;
