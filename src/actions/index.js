@@ -1,11 +1,19 @@
-export function increase() {
-    return {
-        type: "INCREASE"
-    };
+const actions = {
+    increase: () => {
+        return {
+            type: "INCREASE"
+        }
+    },
+    decrease: () => {
+        return {
+            type: "DECREASE"
+        }
+    },
+    returnZero: () => {
+        return {
+            type: "RETURNZERO"
+        }
+    }
 }
 
-export function decrease() {
-    return {
-        type: "DECREASE"
-    };
-}
+export default actions;

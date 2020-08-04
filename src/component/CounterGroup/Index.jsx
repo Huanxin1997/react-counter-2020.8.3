@@ -1,11 +1,11 @@
 import React from 'react';
-import Counter from '../Counter/Index';
+import Counter from '../../containers/counterContainer';
 import store from '../../store';
 
 class CounterGroup extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             numberOfCounters: 0,
@@ -19,7 +19,7 @@ class CounterGroup extends React.Component {
     createCounterList() {
         let counterList = new Array(this.state.numberOfCounters)
             .fill(0)
-            .map((value, index) => <Counter key={index} numberOfCounters={this.state.numberOfCounters} calculateTotal={this.calculateTotal.bind(this)} />);
+            .map((value, index) => <Counter key={index} numberOfCounters={this.state.numberOfCounters} />);
         this.setCounters(counterList);
     }
 
@@ -30,7 +30,7 @@ class CounterGroup extends React.Component {
     }
 
     handlInputChange = event => {
-        store.dispatch({ type: 'RETURN_ZERO' });
+        this.props.returnZero();
         let count = 0;
         if (event.target.value < 0) {
             alert("Please give a number larger than 0!");
@@ -43,18 +43,17 @@ class CounterGroup extends React.Component {
         }, () => this.createCounterList());
     }
 
-    calculateTotal = () => {
-        this.setState({
-            total: store.getState().counters
-        })
-    }
-
     render() {
         return (
             <div>
                 Number of Counters:
-                <input type="number" className="count_input" value={this.state.numberOfCounters} onChange={this.handlInputChange}></input>
-                <h3>Total: {this.state.total}</h3>
+                <input
+                    type="number"
+                    className="count_input"
+                    value={this.state.numberOfCounters}
+                    onChange={this.handlInputChange}>
+                </input>
+                <h3>Total: {this.props.total}</h3>
                 {this.state.counters}
             </div>
         );
