@@ -9,10 +9,12 @@ class Counter extends React.Component {
         }
     }
 
-    componentWillReceiveProps() {
-        this.setState({
-            number: 0
-        })
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.numberOfCounters !== this.props.numberOfCounters) {
+            this.setState({
+                number: 0
+            })
+        }
     }
 
     increase = () => {

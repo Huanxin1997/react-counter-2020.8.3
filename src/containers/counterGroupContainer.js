@@ -4,8 +4,6 @@ import CounterGroup from '../component/CounterGroup/Index';
 
 const mapDispatchToProps = dispatch => {
     return {
-        increase: () => dispatch(actions.increase()),
-        decrease: () => dispatch(actions.decrease()),
         returnZero: () => dispatch(actions.returnZero())
     }
 }
